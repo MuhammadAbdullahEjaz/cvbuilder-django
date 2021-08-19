@@ -1,0 +1,24 @@
+{% extends 'cv/base.html' %}
+
+{% block title %}
+Skill
+{% endblock %}
+
+{% block content %}
+<div class="info-container">
+    {%for i in skill%}
+    <h3>{{i.title}}</h3>
+    <p>experties: {{i.rating}}/10</p>
+    <a href={% url 'skill_delete' id=i.id %}>Delete</a>
+    <br>
+    {% endfor %}
+</div>
+<div class="form-container">
+    <h2>Skill</h2>
+    <form method="POST">{% csrf_token %}
+        {{form}}
+        <input type="submit" value="Add" name="add">
+        <a href={% url 'interest_hobby_form' %}>Next</a>
+    </form>
+</div>
+{% endblock %}

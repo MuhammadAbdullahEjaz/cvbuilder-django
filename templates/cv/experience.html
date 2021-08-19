@@ -1,0 +1,26 @@
+{% extends 'cv/base.html' %}
+
+{% block title %}
+Experience
+{% endblock %}
+
+{% block content %}
+    <div class="info-container">
+        {%for i in experience%}
+        <h3>{{i.title}}</h3>
+        <p>{{i.ex_from}}-{{i.ex_to}}</p>
+        <p>{{i.description}}</p>
+        <a href={% url 'experience_delete' id=i.id %}>Delete</a>
+        {% endfor %}
+    </div>
+    <div class="form-container">
+        <h2>Experience</h2>
+        <form method="POST">{% csrf_token %}
+            {{form}}
+            <input type="submit" value="Add" name="add">
+            <a href={% url 'skill_form' %}>Next</a>
+        </form>
+    </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'cv/css/form.css' %}>
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <div class="nav">
+        <a href={% url 'logout' %}>LOGOUT</a>
+        <a href={% url 'profile_form' %}>PROFILE</a>
+        <a href={% url 'education_form' %}>EDUCATION</a>
+        <a href={% url 'experience_form' %}>EXPERIENCE</a>
+        <a href={% url 'skill_form' %}>SKILL</a>
+        <a href={% url 'interest_hobby_form' %}>INTEREST HOBBY</a>
+        <a href={% url 'rcv' %}>REVIEW CV</a>
+        <a href={% url 'gcv' %}>GENERATE CV</a>
+    </div>
+    <div style="display: flex;">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

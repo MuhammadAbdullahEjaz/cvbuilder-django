@@ -1,0 +1,23 @@
+body{
+    display: flex;
+    flex-direction: column;
+}
+
+form{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-around;
+}
+
+.info-container, .form-container{
+    width: 50%;
+}
+
+.danger{
+    color: red;
+}

@@ -1,0 +1,27 @@
+{% extends 'cv/base.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+{% block content %}
+<div class="info-container">
+    {% for p in profile %}
+    <div>
+        <h3>{{p.name}}</h3>
+        <h5>Address:</h5>
+        <p>{{p.address}}</p>
+        <h5>Phone:</h5>
+        <p>{{p.phone}}</p>
+    </div>
+    {% endfor %}
+</div>
+<div class="form-container">
+    <h2>Profile</h2>
+    <form method="POST">{% csrf_token %}
+        {{form}}
+        <input type="submit" value="Submit" name="submit">
+        <a href={% url 'education_form' %}>Next</a>
+    </form>
+</div>
+{% endblock %}

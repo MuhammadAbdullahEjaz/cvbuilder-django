@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href={% static 'cv/css/cv.css' %}>
+    <title>CV</title>
+</head>
+
+<body>
+    <div class="profile">
+        {% for p in profile %}
+        <h1>{{p.name}}</h1>
+        <p>{{p.address}}</p>
+        <p>{{p.phone}}</p>
+        {% endfor %}
+    </div>
+    <div class="Education">
+        <h2>Education</h2>
+        {% for e in education %}
+        <div class="ed-div">
+            <h4>
+                {% if e.degree == 'M' %}
+                Matric
+                {% elif e.degree == 'I' %}
+                Intermediate
+                {% elif e.degree == 'G' %}
+                Graduation
+                {% elif e.degree == 'P' %}
+                Master
+                {% endif %}
+            </h4>
+            <div>
+                <p>{{e.school}}</p>
+                <p>{{e.ed_from}}-{{e.ed_to}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="Experience">
+        <h2>Experience</h2>
+        {% for e in experience %}
+        <h4>{{e.title}}</h4>
+        <p>{{e.ex_from}}-{{e.ex_to}}</p>
+        <p>{{e.description}}</p>
+        {% endfor %}
+    </div>
+    <div class="Skill">
+        <h2>Skill</h2>
+        {% for s in skill %}
+        <p>{{s.title}} - {{s.rating}}/10</p>
+        {% endfor %}
+    </div>
+    <div class="Interest_Hobby">
+        <h2>Interest/Hobby</h2>
+        {% for e in ih %}
+        <p>{{e.title}}</p>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

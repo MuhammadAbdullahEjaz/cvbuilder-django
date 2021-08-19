@@ -1,0 +1,39 @@
+{% extends 'cv/base.html' %}
+
+{% block title %}
+Education
+{% endblock %}
+
+{% block content %}
+<div class="info-container">
+    {% for ed in education %}
+    <div key={{ed.id}}>
+        <h3>
+            {% if ed.degree == 'M' %}
+            Matric
+            {% elif ed.degree == 'I' %}
+            Intermediate
+            {% elif ed.degree == 'G' %}
+            Graduation
+            {% elif ed.degree == 'P' %}
+            Master
+            {% endif %}
+        </h3>
+        <h4>{{ed.school}}</h4>
+        <span>{{ed.ed_from}} - {{ed.ed_to}}</span>
+        <br>
+        <a href={% url 'education_delete' id=ed.id %}>Delete</a>
+        <br>
+    </div>
+    {% endfor %}
+</div>
+<div class="form-container">
+    <h2>Education</h2>
+    <form method="POST">{% csrf_token %}
+        <span class="danger">{{error}}</span>
+        {{form}}
+        <input type="submit" value="Add" name="add">
+        <a href={% url 'experience_form' %}>Next</a>
+    </form>
+</div>
+{% endblock %}
